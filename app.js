@@ -15,18 +15,21 @@ const templateDefinitions = {
     stickerName: "juniors-become-seniors",
     lines: ["JUNIORS", "BECOME", "SENIORS"],
     qrUrl: "https://agentforce.consultantcloud.io/?utm_source=agentforce&utm_medium=qr&utm_campaign=agentforce_2026&utm_content=sticker_1",
+    qrColor: "#FFFFFF",
   },
   certified: {
     label: "Get Certified Faster",
     stickerName: "get-certified-faster",
     lines: ["GET CERTIFIED", "FASTER", ""],
     qrUrl: "https://agentforce.consultantcloud.io/?utm_source=agentforce&utm_medium=qr&utm_campaign=agentforce_2026&utm_content=sticker_2",
+    qrColor: "#242424",
   },
   architect: {
     label: "Future Solution Architect",
     stickerName: "future-solution-architect",
     lines: ["FUTURE", "SOLUTION", "ARCHITECT"],
     qrUrl: "https://agentforce.consultantcloud.io/?utm_source=agentforce&utm_medium=qr&utm_campaign=agentforce_2026&utm_content=sticker_3",
+    qrColor: "#FFFFFF",
   },
 };
 
@@ -131,7 +134,10 @@ async function render() {
   setStatus("Rendering preview...");
 
   try {
-    const qrImage = await createQrDataUrl(state.qrUrl || "https://consultantcloud.io/");
+    const qrImage = await createQrDataUrl(
+      state.qrUrl || "https://consultantcloud.io/",
+      templateDefinitions[state.template].qrColor,
+    );
     const templateRenderer = renderers[state.template];
     state.svg = templateRenderer({ ...state, qrImage });
     refs.preview.innerHTML = state.svg.replace(/^<\?xml[^>]*>\s*/, "");
@@ -143,7 +149,7 @@ async function render() {
   }
 }
 
-function createQrDataUrl(url) {
+function createQrDataUrl(url, darkColor) {
   return new Promise((resolve, reject) => {
     QRCode.toDataURL(
       url,
@@ -151,7 +157,7 @@ function createQrDataUrl(url) {
         margin: 0,
         width: 700,
         color: {
-          dark: "#000000",
+          dark: darkColor,
           light: "#0000",
         },
         errorCorrectionLevel: "Q",
