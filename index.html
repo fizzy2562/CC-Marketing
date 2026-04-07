@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CC Marketing Sticker Creator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+    <script type="module" src="./app.js"></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Consultant Cloud</p>
+          <h1>Sticker Creator</h1>
+          <p class="intro">
+            Edit the headline, set the QR destination, and export a clean SVG or
+            PNG version of your sticker in a few clicks.
+          </p>
+        </div>
+        <div class="hero-card">
+          <span>Static app</span>
+          <span>GitHub-ready</span>
+          <span>Vercel-ready</span>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <form id="controls" class="panel controls-panel">
+          <div class="panel-header">
+            <h2>Sticker Settings</h2>
+            <p>Use one of the current templates and swap in your campaign copy.</p>
+          </div>
+
+          <label class="field">
+            <span>Template</span>
+            <select id="template"></select>
+          </label>
+
+          <label class="field">
+            <span>Sticker Name</span>
+            <input id="stickerName" name="stickerName" type="text" />
+          </label>
+
+          <label class="field">
+            <span>Line 1</span>
+            <input id="line1" name="line1" type="text" maxlength="24" />
+          </label>
+
+          <label class="field">
+            <span>Line 2</span>
+            <input id="line2" name="line2" type="text" maxlength="24" />
+          </label>
+
+          <label class="field">
+            <span>Line 3</span>
+            <input id="line3" name="line3" type="text" maxlength="24" />
+          </label>
+
+          <label class="field">
+            <span>QR URL</span>
+            <input id="qrUrl" name="qrUrl" type="url" />
+          </label>
+
+          <div class="actions">
+            <button id="downloadSvg" type="button">Download SVG</button>
+            <button id="downloadPng" type="button" class="secondary">Download PNG</button>
+          </div>
+
+          <p id="status" class="status" aria-live="polite"></p>
+        </form>
+
+        <section class="panel preview-panel">
+          <div class="panel-header">
+            <h2>Live Preview</h2>
+            <p>Rendered from SVG so your download matches the preview.</p>
+          </div>
+          <div class="preview-wrap">
+            <div id="preview" class="preview" aria-label="Sticker preview"></div>
+          </div>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>
