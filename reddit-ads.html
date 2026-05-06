@@ -27,210 +27,239 @@
           <p class="eyebrow">Consultant Cloud</p>
           <h1>Reddit Ad Creator</h1>
           <p class="intro">
-            Generate all six 1200×628 Reddit ad images directly in the browser.
-            Upload optional background photos, tweak the copy, then download
-            individually or as a ZIP.
+            Review all six 1200&times;628 ad previews below. Upload background photos and
+            tweak copy per ad. When you're happy, download individually or grab the
+            full ZIP.
           </p>
         </div>
         <div class="hero-card">
-          <span>1200 × 628 px</span>
+          <span>1200 &times; 628 px</span>
           <span>6 ad variants</span>
-          <span>PNG export</span>
+          <span>Live preview</span>
         </div>
       </section>
 
-      <!-- Toolbar -->
-      <div class="ad-toolbar panel">
-        <button id="generate-all" type="button" class="btn-primary">
-          Generate All &amp; Download ZIP
-        </button>
-        <p id="global-status" class="status" aria-live="polite"></p>
-      </div>
-
-      <!-- Ad grid -->
-      <div class="ad-grid">
+      <!-- Ad list: one full-width card per ad -->
+      <div class="ad-list">
 
         <!-- Ad 01 – Brand Hero -->
         <div class="ad-card panel">
-          <div class="ad-card-header">
-            <span class="ad-badge">01</span>
-            <h3>Brand Hero</h3>
-          </div>
-          <div class="ad-preview-wrap">
+          <div class="ad-preview-col">
             <canvas id="canvas-0"></canvas>
           </div>
-          <p class="ad-headline-info">
-            Headline: <em>Unlock Your <span class="hl-cyan">Salesforce</span> Potential.</em>
-          </p>
-          <label class="field">
-            <span>Sub-headline</span>
-            <textarea id="sub-0" rows="2"></textarea>
-          </label>
-          <label class="field">
-            <span>CTA Text</span>
-            <input id="cta-0" type="text" />
-          </label>
-          <div class="ad-card-actions">
-            <label class="upload-btn">
-              <input id="bg-upload-0" type="file" accept="image/*" hidden />
-              <span>Upload BG</span>
+          <div class="ad-settings">
+            <div class="ad-card-header">
+              <span class="ad-badge">01</span>
+              <h3>Brand Hero</h3>
+            </div>
+            <p class="ad-headline-info">
+              <span class="info-label">Headline</span>
+              Unlock Your <span class="hl-cyan">Salesforce</span> Potential.
+            </p>
+            <label class="field">
+              <span>Sub-headline</span>
+              <textarea id="sub-0" rows="2"></textarea>
             </label>
-            <span id="bg-label-0" class="bg-filename"></span>
-            <button id="download-0" type="button" class="btn-secondary">Download PNG</button>
+            <label class="field">
+              <span>CTA text</span>
+              <input id="cta-0" type="text" />
+            </label>
+            <div class="ad-card-actions">
+              <label class="upload-btn">
+                <input id="bg-upload-0" type="file" accept="image/*" hidden />
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v9M4 5l4-4 4 4M2 13h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Upload BG
+              </label>
+              <span id="bg-label-0" class="bg-filename"></span>
+              <button id="download-0" type="button" class="btn-secondary ml-auto">Download PNG</button>
+            </div>
           </div>
         </div>
 
         <!-- Ad 02 – Certification -->
         <div class="ad-card panel">
-          <div class="ad-card-header">
-            <span class="ad-badge">02</span>
-            <h3>Certification</h3>
-          </div>
-          <div class="ad-preview-wrap">
+          <div class="ad-preview-col">
             <canvas id="canvas-1"></canvas>
           </div>
-          <p class="ad-headline-info">
-            Headline: <em>Pass Salesforce <span class="hl-cyan">certs faster</span></em>
-          </p>
-          <label class="field">
-            <span>Sub-headline</span>
-            <textarea id="sub-1" rows="2"></textarea>
-          </label>
-          <label class="field">
-            <span>CTA Text</span>
-            <input id="cta-1" type="text" />
-          </label>
-          <div class="ad-card-actions">
-            <label class="upload-btn">
-              <input id="bg-upload-1" type="file" accept="image/*" hidden />
-              <span>Upload BG</span>
+          <div class="ad-settings">
+            <div class="ad-card-header">
+              <span class="ad-badge">02</span>
+              <h3>Certification</h3>
+            </div>
+            <p class="ad-headline-info">
+              <span class="info-label">Headline</span>
+              Pass Salesforce <span class="hl-cyan">certs faster</span>
+            </p>
+            <label class="field">
+              <span>Sub-headline</span>
+              <textarea id="sub-1" rows="2"></textarea>
             </label>
-            <span id="bg-label-1" class="bg-filename"></span>
-            <button id="download-1" type="button" class="btn-secondary">Download PNG</button>
+            <label class="field">
+              <span>CTA text</span>
+              <input id="cta-1" type="text" />
+            </label>
+            <div class="ad-card-actions">
+              <label class="upload-btn">
+                <input id="bg-upload-1" type="file" accept="image/*" hidden />
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v9M4 5l4-4 4 4M2 13h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Upload BG
+              </label>
+              <span id="bg-label-1" class="bg-filename"></span>
+              <button id="download-1" type="button" class="btn-secondary ml-auto">Download PNG</button>
+            </div>
           </div>
         </div>
 
         <!-- Ad 03 – CC-GPT -->
         <div class="ad-card panel">
-          <div class="ad-card-header">
-            <span class="ad-badge">03</span>
-            <h3>CC-GPT</h3>
-          </div>
-          <div class="ad-preview-wrap">
+          <div class="ad-preview-col">
             <canvas id="canvas-2"></canvas>
           </div>
-          <p class="ad-headline-info">
-            Headline: <em><span class="hl-cyan">CC-GPT</span>: your <span class="hl-cyan">Salesforce</span> study copilot</em>
-          </p>
-          <label class="field">
-            <span>Sub-headline</span>
-            <textarea id="sub-2" rows="2"></textarea>
-          </label>
-          <label class="field">
-            <span>CTA Text</span>
-            <input id="cta-2" type="text" />
-          </label>
-          <div class="ad-card-actions">
-            <label class="upload-btn">
-              <input id="bg-upload-2" type="file" accept="image/*" hidden />
-              <span>Upload BG</span>
+          <div class="ad-settings">
+            <div class="ad-card-header">
+              <span class="ad-badge">03</span>
+              <h3>CC-GPT</h3>
+            </div>
+            <p class="ad-headline-info">
+              <span class="info-label">Headline</span>
+              <span class="hl-cyan">CC-GPT</span>: your <span class="hl-cyan">Salesforce</span> study copilot
+            </p>
+            <label class="field">
+              <span>Sub-headline</span>
+              <textarea id="sub-2" rows="2"></textarea>
             </label>
-            <span id="bg-label-2" class="bg-filename"></span>
-            <button id="download-2" type="button" class="btn-secondary">Download PNG</button>
+            <label class="field">
+              <span>CTA text</span>
+              <input id="cta-2" type="text" />
+            </label>
+            <div class="ad-card-actions">
+              <label class="upload-btn">
+                <input id="bg-upload-2" type="file" accept="image/*" hidden />
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v9M4 5l4-4 4 4M2 13h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Upload BG
+              </label>
+              <span id="bg-label-2" class="bg-filename"></span>
+              <button id="download-2" type="button" class="btn-secondary ml-auto">Download PNG</button>
+            </div>
           </div>
         </div>
 
         <!-- Ad 04 – Jobs -->
         <div class="ad-card panel">
-          <div class="ad-card-header">
-            <span class="ad-badge">04</span>
-            <h3>Jobs</h3>
-          </div>
-          <div class="ad-preview-wrap">
+          <div class="ad-preview-col">
             <canvas id="canvas-3"></canvas>
           </div>
-          <p class="ad-headline-info">
-            Headline: <em>Salesforce roles in <span class="hl-cyan">one place</span></em>
-          </p>
-          <label class="field">
-            <span>Sub-headline</span>
-            <textarea id="sub-3" rows="2"></textarea>
-          </label>
-          <label class="field">
-            <span>CTA Text</span>
-            <input id="cta-3" type="text" />
-          </label>
-          <div class="ad-card-actions">
-            <label class="upload-btn">
-              <input id="bg-upload-3" type="file" accept="image/*" hidden />
-              <span>Upload BG</span>
+          <div class="ad-settings">
+            <div class="ad-card-header">
+              <span class="ad-badge">04</span>
+              <h3>Jobs</h3>
+            </div>
+            <p class="ad-headline-info">
+              <span class="info-label">Headline</span>
+              Salesforce roles in <span class="hl-cyan">one place</span>
+            </p>
+            <label class="field">
+              <span>Sub-headline</span>
+              <textarea id="sub-3" rows="2"></textarea>
             </label>
-            <span id="bg-label-3" class="bg-filename"></span>
-            <button id="download-3" type="button" class="btn-secondary">Download PNG</button>
+            <label class="field">
+              <span>CTA text</span>
+              <input id="cta-3" type="text" />
+            </label>
+            <div class="ad-card-actions">
+              <label class="upload-btn">
+                <input id="bg-upload-3" type="file" accept="image/*" hidden />
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v9M4 5l4-4 4 4M2 13h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Upload BG
+              </label>
+              <span id="bg-label-3" class="bg-filename"></span>
+              <button id="download-3" type="button" class="btn-secondary ml-auto">Download PNG</button>
+            </div>
           </div>
         </div>
 
         <!-- Ad 05 – Free Tier -->
         <div class="ad-card panel">
-          <div class="ad-card-header">
-            <span class="ad-badge">05</span>
-            <h3>Free Tier</h3>
-          </div>
-          <div class="ad-preview-wrap">
+          <div class="ad-preview-col">
             <canvas id="canvas-4"></canvas>
           </div>
-          <p class="ad-headline-info">
-            Headline: <em>Start <span class="hl-mint">free</span> — upgrade when you're ready</em>
-          </p>
-          <label class="field">
-            <span>Sub-headline</span>
-            <textarea id="sub-4" rows="3"></textarea>
-          </label>
-          <label class="field">
-            <span>CTA Text</span>
-            <input id="cta-4" type="text" />
-          </label>
-          <div class="ad-card-actions">
-            <label class="upload-btn">
-              <input id="bg-upload-4" type="file" accept="image/*" hidden />
-              <span>Upload BG</span>
+          <div class="ad-settings">
+            <div class="ad-card-header">
+              <span class="ad-badge">05</span>
+              <h3>Free Tier</h3>
+            </div>
+            <p class="ad-headline-info">
+              <span class="info-label">Headline</span>
+              Start <span class="hl-mint">free</span> — upgrade when you're ready
+            </p>
+            <label class="field">
+              <span>Sub-headline</span>
+              <textarea id="sub-4" rows="3"></textarea>
             </label>
-            <span id="bg-label-4" class="bg-filename"></span>
-            <button id="download-4" type="button" class="btn-secondary">Download PNG</button>
+            <label class="field">
+              <span>CTA text</span>
+              <input id="cta-4" type="text" />
+            </label>
+            <div class="ad-card-actions">
+              <label class="upload-btn">
+                <input id="bg-upload-4" type="file" accept="image/*" hidden />
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v9M4 5l4-4 4 4M2 13h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Upload BG
+              </label>
+              <span id="bg-label-4" class="bg-filename"></span>
+              <button id="download-4" type="button" class="btn-secondary ml-auto">Download PNG</button>
+            </div>
           </div>
         </div>
 
         <!-- Ad 06 – Community -->
         <div class="ad-card panel">
-          <div class="ad-card-header">
-            <span class="ad-badge">06</span>
-            <h3>Community</h3>
-          </div>
-          <div class="ad-preview-wrap">
+          <div class="ad-preview-col">
             <canvas id="canvas-5"></canvas>
           </div>
-          <p class="ad-headline-info">
-            Headline: <em>Built by <span class="hl-cyan">consultants</span> for <span class="hl-cyan">consultants</span></em>
-          </p>
-          <label class="field">
-            <span>Sub-headline</span>
-            <textarea id="sub-5" rows="2"></textarea>
-          </label>
-          <label class="field">
-            <span>CTA Text</span>
-            <input id="cta-5" type="text" />
-          </label>
-          <div class="ad-card-actions">
-            <label class="upload-btn">
-              <input id="bg-upload-5" type="file" accept="image/*" hidden />
-              <span>Upload BG</span>
+          <div class="ad-settings">
+            <div class="ad-card-header">
+              <span class="ad-badge">06</span>
+              <h3>Community</h3>
+            </div>
+            <p class="ad-headline-info">
+              <span class="info-label">Headline</span>
+              Built by <span class="hl-cyan">consultants</span> for <span class="hl-cyan">consultants</span>
+            </p>
+            <label class="field">
+              <span>Sub-headline</span>
+              <textarea id="sub-5" rows="2"></textarea>
             </label>
-            <span id="bg-label-5" class="bg-filename"></span>
-            <button id="download-5" type="button" class="btn-secondary">Download PNG</button>
+            <label class="field">
+              <span>CTA text</span>
+              <input id="cta-5" type="text" />
+            </label>
+            <div class="ad-card-actions">
+              <label class="upload-btn">
+                <input id="bg-upload-5" type="file" accept="image/*" hidden />
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v9M4 5l4-4 4 4M2 13h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Upload BG
+              </label>
+              <span id="bg-label-5" class="bg-filename"></span>
+              <button id="download-5" type="button" class="btn-secondary ml-auto">Download PNG</button>
+            </div>
           </div>
         </div>
 
-      </div><!-- /.ad-grid -->
+      </div><!-- /.ad-list -->
+
+      <!-- Sticky download bar — visible once user has reviewed all ads -->
+      <div class="sticky-bar">
+        <div class="sticky-bar-text">
+          <p class="sticky-bar-title">Happy with all 6?</p>
+          <p class="sticky-bar-sub">Downloads exactly what you see in the previews above.</p>
+        </div>
+        <button id="generate-all" type="button" class="btn-primary">
+          Download All as ZIP
+        </button>
+        <p id="global-status" class="status" aria-live="polite"></p>
+      </div>
+
     </main>
   </body>
 </html>

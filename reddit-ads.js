@@ -1,3 +1,5 @@
+/* global JSZip */
+
 const W = 1200;
 const H = 628;
 
@@ -385,16 +387,18 @@ async function generateAll() {
   const statusEl = document.getElementById("global-status");
   const btn = document.getElementById("generate-all");
   btn.disabled = true;
+  statusEl.textContent = "";
 
   try {
     const zip = new JSZip();
     for (let i = 0; i < AD_CONFIGS.length; i++) {
-      statusEl.textContent = `Generating ${i + 1} / ${AD_CONFIGS.length}…`;
+      statusEl.textContent = `Packing ${i + 1} / ${AD_CONFIGS.length}…`;
+      // Re-render to guarantee full 1200×628 resolution matches the preview
       await renderAd(i);
       const blob = await new Promise((resolve) => getCanvas(i).toBlob(resolve, "image/png"));
       zip.file(AD_CONFIGS[i].filename, blob);
     }
-    statusEl.textContent = "Creating ZIP…";
+    statusEl.textContent = "Building ZIP…";
     const zipBlob = await zip.generateAsync({ type: "blob" });
     const url = URL.createObjectURL(zipBlob);
     const a = document.createElement("a");
@@ -402,10 +406,10 @@ async function generateAll() {
     a.download = "reddit-ads.zip";
     a.click();
     URL.revokeObjectURL(url);
-    statusEl.textContent = "All 6 ads downloaded!";
+    statusEl.textContent = "ZIP downloaded!";
   } catch (err) {
     console.error(err);
-    statusEl.textContent = "Error generating ads — check the console.";
+    statusEl.textContent = "Something went wrong — check the console.";
   } finally {
     btn.disabled = false;
   }
