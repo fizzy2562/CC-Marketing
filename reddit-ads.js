@@ -327,8 +327,6 @@ async function composeAd(canvas, config, bgImg = null) {
     ctx.drawImage(logo, 44, 44, logoW, logoH);
   }
 
-  drawRoundedRect(ctx, 44, 136, 316, 6, 3, brandGradient(ctx, 44, 136, 360, 136));
-
   const titleFont = `bold 46px Arial, "Helvetica Neue", Helvetica, sans-serif`;
   const subFont = `26px Arial, "Helvetica Neue", Helvetica, sans-serif`;
   const ctaFont = `bold 24px Arial, "Helvetica Neue", Helvetica, sans-serif`;
@@ -349,7 +347,9 @@ async function composeAd(canvas, config, bgImg = null) {
   const ctaY = H - 100;
 
   if (config.featureRow) {
-    drawFeatureIconRow(ctx, xText, ctaY - 102, config.featureRow, BRAND_TEAL);
+    const featureY = ctaY - 102;
+    drawRoundedRect(ctx, 44, featureY - 48, 316, 6, 3, brandGradient(ctx, 44, featureY - 48, 360, featureY - 48));
+    drawFeatureIconRow(ctx, xText, featureY, config.featureRow, BRAND_TEAL);
   }
 
   ctx.font = ctaFont;
