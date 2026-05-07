@@ -5,10 +5,10 @@ const H = 628;
 
 const BG = [3, 10, 3];
 const TEXT_MUTED = [205, 210, 208];
-const CTA_BG = [81, 172, 82];
+const BRAND_BLUE = [61, 127, 171];
+const BRAND_TEAL = [77, 166, 139];
+const BRAND_GREEN = [81, 172, 82];
 const WHITE = [255, 255, 255];
-const CYAN = [85, 220, 245];
-const MINT = [130, 245, 195];
 
 const DEFAULT_CTA = "Sign up free · Premium access for 72 hours";
 
@@ -26,7 +26,7 @@ const AD_CONFIGS = [
     filename: "reddit-ad-01-brand-hero.png",
     headlineLabel: "Unlock Your Salesforce Potential.",
     headlineLines: [
-      [["Unlock Your ", WHITE], ["Salesforce", CYAN], [" Potential.", WHITE]],
+      [["Unlock Your ", WHITE], ["Salesforce", BRAND_TEAL], [" Potential.", WHITE]],
     ],
     sub: "Resources built for consultants & admins.",
     cta: DEFAULT_CTA,
@@ -39,11 +39,11 @@ const AD_CONFIGS = [
     headlineLabel: "Pass Salesforce certs faster",
     headlineLines: [
       [["Pass Salesforce", WHITE]],
-      [["certs faster", CYAN]],
+      [["certs faster", BRAND_TEAL]],
     ],
     sub: "Practice exams + curated study paths.",
     cta: DEFAULT_CTA,
-    featureRow: null,
+    featureRow: BRAND_FEATURES,
   },
   {
     id: "ccgpt",
@@ -51,12 +51,12 @@ const AD_CONFIGS = [
     filename: "reddit-ad-03-ccgpt.png",
     headlineLabel: "CC-GPT: your Salesforce study copilot",
     headlineLines: [
-      [["CC-GPT", CYAN], [": your ", WHITE]],
-      [["Salesforce ", CYAN], ["study copilot", WHITE]],
+      [["CC-GPT", BRAND_BLUE], [": your ", WHITE]],
+      [["Salesforce ", BRAND_TEAL], ["study copilot", WHITE]],
     ],
     sub: "Smart prompts. Daily practice.",
     cta: DEFAULT_CTA,
-    featureRow: null,
+    featureRow: BRAND_FEATURES,
   },
   {
     id: "jobs",
@@ -65,11 +65,11 @@ const AD_CONFIGS = [
     headlineLabel: "Salesforce roles in one place",
     headlineLines: [
       [["Salesforce roles in ", WHITE]],
-      [["one place", CYAN]],
+      [["one place", BRAND_TEAL]],
     ],
     sub: "See openings from consultancies and end users.",
     cta: DEFAULT_CTA,
-    featureRow: null,
+    featureRow: BRAND_FEATURES,
   },
   {
     id: "free-tier",
@@ -77,11 +77,11 @@ const AD_CONFIGS = [
     filename: "reddit-ad-05-free-tier.png",
     headlineLabel: "Start free — upgrade when you're ready",
     headlineLines: [
-      [["Start ", WHITE], ["free", MINT], [" — upgrade when you're ready", WHITE]],
+      [["Start ", WHITE], ["free", BRAND_GREEN], [" — upgrade when you're ready", WHITE]],
     ],
     sub: "Free: curated content, jobs & CC-GPT (daily limit). Premium: full practice exams & higher CC-GPT limits. New signups: 72 hours of Premium.",
     cta: DEFAULT_CTA,
-    featureRow: null,
+    featureRow: BRAND_FEATURES,
   },
   {
     id: "community",
@@ -89,18 +89,26 @@ const AD_CONFIGS = [
     filename: "reddit-ad-06-community.png",
     headlineLabel: "Built by consultants for consultants",
     headlineLines: [
-      [["Built by ", WHITE], ["consultants", CYAN]],
-      [["for ", WHITE], ["consultants", CYAN]],
+      [["Built by ", WHITE], ["consultants", BRAND_TEAL]],
+      [["for ", WHITE], ["consultants", BRAND_TEAL]],
     ],
     sub: "Cert prep, insights, and community support in one platform.",
     cta: DEFAULT_CTA,
-    featureRow: null,
+    featureRow: BRAND_FEATURES,
   },
 ];
 
 // ── Drawing helpers (ported 1:1 from the Node script) ─────────────────────────
 
 const rgba = (arr, a = 1) => `rgba(${arr[0]}, ${arr[1]}, ${arr[2]}, ${a})`;
+
+function brandGradient(ctx, x0, y0, x1, y1) {
+  const grad = ctx.createLinearGradient(x0, y0, x1, y1);
+  grad.addColorStop(0, rgba(BRAND_BLUE, 1));
+  grad.addColorStop(0.52, rgba(BRAND_TEAL, 1));
+  grad.addColorStop(1, rgba(BRAND_GREEN, 1));
+  return grad;
+}
 
 function segWidth(ctx, text) {
   return Math.ceil(ctx.measureText(text).width);
@@ -169,7 +177,7 @@ function drawRoundedRect(ctx, x, y, w, h, r, fill) {
   ctx.arcTo(x, y + h, x, y, rr);
   ctx.arcTo(x, y, x + w, y, rr);
   ctx.closePath();
-  ctx.fillStyle = rgba(fill, 1);
+  ctx.fillStyle = Array.isArray(fill) ? rgba(fill, 1) : fill;
   ctx.fill();
 }
 
@@ -242,7 +250,7 @@ function drawLineIcon(ctx, kind, cx, cy, color, sw = 2) {
   }
 }
 
-function drawFeatureIconRow(ctx, x0, yIconCenter, items, iconColor = CYAN) {
+function drawFeatureIconRow(ctx, x0, yIconCenter, items, iconColor = BRAND_TEAL) {
   const colW = 128;
   ctx.font = `15px Arial, "Helvetica Neue", Helvetica, sans-serif`;
   ctx.textBaseline = "top";
@@ -319,6 +327,8 @@ async function composeAd(canvas, config, bgImg = null) {
     ctx.drawImage(logo, 44, 44, logoW, logoH);
   }
 
+  drawRoundedRect(ctx, 44, 136, 316, 6, 3, brandGradient(ctx, 44, 136, 360, 136));
+
   const titleFont = `bold 46px Arial, "Helvetica Neue", Helvetica, sans-serif`;
   const subFont = `26px Arial, "Helvetica Neue", Helvetica, sans-serif`;
   const ctaFont = `bold 24px Arial, "Helvetica Neue", Helvetica, sans-serif`;
@@ -339,7 +349,7 @@ async function composeAd(canvas, config, bgImg = null) {
   const ctaY = H - 100;
 
   if (config.featureRow) {
-    drawFeatureIconRow(ctx, xText, ctaY - 102, config.featureRow, CYAN);
+    drawFeatureIconRow(ctx, xText, ctaY - 102, config.featureRow, BRAND_TEAL);
   }
 
   ctx.font = ctaFont;
@@ -351,7 +361,7 @@ async function composeAd(canvas, config, bgImg = null) {
   const pillW = tw + padX * 2;
   const pillH = 24 + padY * 2;
 
-  drawRoundedRect(ctx, 44, ctaY, pillW, pillH, 14, CTA_BG);
+  drawRoundedRect(ctx, 44, ctaY, pillW, pillH, 14, brandGradient(ctx, 44, ctaY, 44 + pillW, ctaY));
   drawTextStroke(ctx, cta, 44 + padX, ctaY + padY - 2, WHITE, [15, 50, 20], 1);
 }
 
