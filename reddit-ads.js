@@ -311,10 +311,10 @@ async function composeAd(canvas, config, bgImg = null) {
   drawReadabilityScrim(ctx);
   drawBottomScrim(ctx);
 
+  const logoH = 76;
   let logo = null;
   try { logo = await loadLogo(); } catch { /* skip logo if unavailable */ }
   if (logo) {
-    const logoH = 76;
     const logoW = Math.round((logo.width * logoH) / logo.height);
     ctx.drawImage(logo, 44, 44, logoW, logoH);
   }
