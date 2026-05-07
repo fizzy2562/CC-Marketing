@@ -303,14 +303,14 @@ h1 {
 
 /* ── Ad list: full-width horizontal cards ────────────────────────────────── */
 
-.ad-list {
+.creative-list {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
   margin-bottom: 7rem; /* room for sticky bar */
 }
 
-.ad-card {
+.creative-card {
   display: flex;
   flex-direction: row;
   overflow: hidden;
@@ -319,7 +319,7 @@ h1 {
 }
 
 /* Left: preview canvas */
-.ad-preview-col {
+.creative-preview-col {
   flex: 1;
   min-width: 0;
   background: #030a03;
@@ -328,7 +328,7 @@ h1 {
   overflow: hidden;
 }
 
-.ad-preview-col canvas {
+.creative-preview-col canvas {
   position: absolute;
   top: 0;
   left: 0;
@@ -338,7 +338,7 @@ h1 {
 }
 
 /* Right: settings panel */
-.ad-settings {
+.creative-settings {
   width: 320px;
   flex-shrink: 0;
   padding: 1.4rem 1.5rem;
@@ -348,19 +348,19 @@ h1 {
   overflow-y: auto;
 }
 
-.ad-card-header {
+.creative-header {
   display: flex;
   align-items: center;
   gap: 0.7rem;
 }
 
-.ad-card-header h3 {
+.creative-header h3 {
   margin: 0;
   font-size: 1.05rem;
   font-weight: 700;
 }
 
-.ad-badge {
+.creative-badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -375,7 +375,7 @@ h1 {
   flex-shrink: 0;
 }
 
-.ad-headline-info {
+.creative-headline-info {
   font-size: 0.82rem;
   color: var(--muted);
   border-left: 2px solid rgba(85, 220, 245, 0.35);
@@ -416,7 +416,7 @@ h1 {
   outline-offset: 2px;
 }
 
-.ad-card-actions {
+.creative-actions {
   display: flex;
   align-items: center;
   gap: 0.6rem;
@@ -489,11 +489,11 @@ h1 {
 /* ── Responsive ───────────────────────────────────────────────────────────── */
 
 @media (max-width: 860px) {
-  .ad-card {
+  .creative-card {
     flex-direction: column;
   }
 
-  .ad-settings {
+  .creative-settings {
     width: 100%;
     border-right: none;
     border-top: 1px solid rgba(255, 255, 255, 0.07);
